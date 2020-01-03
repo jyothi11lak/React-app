@@ -1,5 +1,6 @@
 import React from "react"
 import "./secondstyle.css"
+import axios from "axios";
 
 export default class Regbasic extends React.Component {
     state = {
@@ -11,7 +12,11 @@ export default class Regbasic extends React.Component {
             gender: "",
             address: "",
             stat: "Tamil Nadu",
-            country: "India",
+            country: [],
+            selectedCountry: {
+                id: 1,
+                name:"Afghanistan"
+            },
             draw: "Drawing",
             sing: "Singing",
             dance: "Dancing",
@@ -26,8 +31,22 @@ export default class Regbasic extends React.Component {
         }
     }
 
+    componentDidMount() {
+        axios.get("https://raw.githubusercontent.com/hiiamrohit/Countries-States-Cities-database/master/countries.json")
+            .then(resp => {
+                console.log(resp.data.countries);
+                let data = resp.data.countries;
+                this.setState(prevState => ({
+                    user: {
+                        ...prevState.user, country: data
+                    }
+                }))
+            })
+    }
+
     handleClick() {
-        this.props.box(this.state.user);
+        //this.props.box(this.state.user);
+        this.props.history.push("/Feed");
     }
 
     firstName(e) {
@@ -165,15 +184,19 @@ export default class Regbasic extends React.Component {
         //this.setState({...user, degreeP:e.target.value)
     }
 
+    handleCountrySelection(e) {
+        console.log(e.target.value);
+    }
+
     render() {
 
         return (
             <div>
 
-                
-                    <h1>Student Registration Form</h1>
-                    <table align="center" cellpadding="30" >
-                        <tbody>
+
+                <h1>Student Registration Form</h1>
+                <table align="center" cellpadding="30" >
+                    <tbody>
                         <tr>
                             <td>FIRST NAME</td>
                             <td><input type="text" value={this.state.user.fName} onChange={(e) => this.firstName(e)} />(max 30 characters a-z and A-Z)
@@ -232,7 +255,14 @@ export default class Regbasic extends React.Component {
 
                         <tr>
                             <td>COUNTRY</td>
-                            <td><input type="text" value={this.state.user.country} /></td>
+                            <td> <select name="Country"  onChange={(e) => this.handleCountrySelection(e)}>
+                            <option value=''>Select Country</option>
+                                    {this.state.user.country.map((count)=>{
+                                            return( <option value={count.id}>{count.name}</option>);
+                                    })
+                                   
+                                    }
+                                </select></td>
                         </tr>
 
                         <tr>
@@ -299,8 +329,8 @@ export default class Regbasic extends React.Component {
 
                             </td>
                         </tr>
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
 
                 <button onClick={() => this.handleClick()} > Submit</button>
             </div>

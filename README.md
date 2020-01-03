@@ -66,3 +66,25 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+////////////////////////////
+
+flexbox-react => passing Flex styling prop to a element "<Flexbox flexDirection="column">" 
+axios => use to raise Http request and get their response to feed the page. 
+react-router-dom 4 => Routing
+
+npm i flexbox-react axios react-router-dom@4 --save
+
+
+
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+
+
+Routing => navigation between webpages(Container components)
+1) Files to specify different pages and map these pages to a url
+2) Wrap these pages in import { Route, Switch } from 'react-router-dom';
+3) import this file with some {constName} in app.js
+4) import {  BrowserRouter } from 'react-router-dom'; in App.js
+5) Wrap this imported thing between this BrowserRouter

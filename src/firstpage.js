@@ -2,6 +2,9 @@ import React from 'react'
 import './firststyle.css'
 
 export default class Information extends React.Component{
+    handleRegistration() {
+        this.props.history.push("/Register");
+    }
 
 render()
 {
@@ -16,7 +19,7 @@ This Application is created to learn the basics of React. </p>
     </p>
 </div>
 <div className = "Info-footer">
-    <button>Register</button><p> Click here to Start UP!!!</p>
+    <button onClick= {() => this.handleRegistration()}>Register</button><p> Click here to Start UP!!!</p>
 
 </div>
 

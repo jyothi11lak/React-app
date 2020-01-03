@@ -1,7 +1,7 @@
 import React from "react"
-import Information from "./firstpage"
-import Regbasic from "./secondpage"
-import Display from "./thirdpage"
+import {myRoute} from "./Routes";
+import {BrowserRouter} from "react-router-dom";
+
 class App extends React.Component{
   
     state = {
@@ -20,7 +20,9 @@ this.setState( {user: userdetails})
     return(
 <div>
   
-  <Regbasic box = {(user)=>this.getUserdetails(user)}/>
+  <BrowserRouter>
+      {myRoute}
+  </BrowserRouter>
   
 </div>
 

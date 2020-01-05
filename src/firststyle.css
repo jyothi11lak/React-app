@@ -1,0 +1,32 @@
+.Info-header{
+    font-family: Calibri; 
+    font-size: 25pt;         
+    font-style: normal; 
+    font-weight: bold; 
+    color:rgb(205, 90, 144);
+    text-align: center; 
+    text-decoration: underline
+  }
+  
+   .Info-body{font-family: Calibri; 
+  color:white; 
+  font-size: 11pt; 
+  font-style: normal;
+  font-weight: bold;
+  text-align: center; 
+  background-color: slateblue; 
+  border-collapse: collapse; 
+  
+}
+.Info-footer{
+    font-family: Calibri; 
+  color:white; 
+  font-size: 11pt; 
+  font-style: normal;
+  font-weight: bold;
+  text-align: center; 
+  background-color: SlateBlue; 
+  border-collapse: collapse; 
+  
+
+}

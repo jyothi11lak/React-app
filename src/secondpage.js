@@ -1,8 +1,10 @@
 import React from "react"
 import "./secondstyle.css"
 import axios from "axios";
+import { setUserData } from "./redux/actions";
+import {connect} from "react-redux";
 
-export default class Regbasic extends React.Component {
+ class Regbasic extends React.Component {
     state = {
         user: {
             fName: "",
@@ -45,6 +47,7 @@ export default class Regbasic extends React.Component {
     }
 
     handleClick() {
+        this.props.setUserData(this.state.user);
         //this.props.box(this.state.user);
         this.props.history.push("/Feed");
     }
@@ -339,3 +342,13 @@ export default class Regbasic extends React.Component {
     }
 
 }
+
+const mapStateToProps = state => ({
+    user: state.userStore.myData
+});
+
+const mapActionToProps = ({
+    setUserData
+})
+
+export default connect(mapStateToProps, mapActionToProps) (Regbasic);

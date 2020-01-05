@@ -1,9 +1,12 @@
 import React from "react"
 import "./thirdstyle.css"
 import Flexbox from "flexbox-react";
+import { connect } from "react-redux";
+class Display extends React.Component {
 
-export default function Display(props) {
-
+    render() {
+        const {user} = this.props;
+        //const user = this.props.user;
     return (
         <Flexbox flexDirection="column">
             <Flexbox style={{ border: "red .5px solid", backgroundColor: "black" }}>Welcome to React Learning</Flexbox>
@@ -11,17 +14,9 @@ export default function Display(props) {
                 <Flexbox>Bar</Flexbox>
                 <Flexbox>
                     <Flexbox flexGrow="3">
-                        Run the React Application
-    If you followed the two commands above, you are ready to run your first real React application!
-    
-    Run this command to move to the myfirstreact directory:
-    
-    C:\Users\Your Name>cd myfirstreact
-    Run this command to execute the React application myfirstreact:
-    
-    C:\Users\Your Name\myfirstreact>npm start
-    A new browser window will pop up with your newly created React App! If not, open your browser and type localhost:3000 in the address bar.
-    
+                        {Object.keys(user).map(x => {
+                            return (<p>{x} ":" {user[x]}</p>)
+                        })}
                     </Flexbox>
                     <Flexbox >Side Nav</Flexbox>
                 </Flexbox>
@@ -29,3 +24,10 @@ export default function Display(props) {
         </Flexbox>
     )
 }
+}
+
+const mapStateToProps = state => ({
+    user: state.userStore.myData
+});
+
+export default connect(mapStateToProps) (Display);
